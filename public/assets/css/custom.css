@@ -1,0 +1,93 @@
+tr:hover{
+	background: #DBDBDB;
+}
+
+/*Sign Up*/
+
+.container-signup{
+	width: 70%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+body.signup {
+    position: initial;
+    padding-top: 0px;
+    /*background: url("../images/lock-1.jpg") repeat scroll 0% 0% transparent;*/
+    background: none repeat scroll 0% 0% #B78732;
+}
+
+body.signup #content {
+    max-width: 760px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+body.signup .lock-container {
+    bottom: 0px;
+    height: 550px;
+    left: 0px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+body.signup .lock-container {
+    margin: auto;
+    width: 300px;
+}
+
+body.signup .lock-container h1 {
+    text-align: center;
+    color: #FFF;
+    font-size: 28px;
+}
+
+body.signup .lock-container .panel input {
+    margin-bottom: 10px;
+}
+.row-form-control{
+	margin-bottom: 10px;
+}
+.col-form-control{
+	margin-bottom: 10px;
+}
+
+/*Tutorial Detail*/
+.profile-icons-tutorial{
+	background: none repeat scroll 0% 0% #F9F9F9;
+	text-align: center;
+	padding: 0px;
+	border-top: 2px solid #EFEFEF;
+	border-bottom: 2px solid #EFEFEF;
+	margin-bottom: 10px;
+}
+
+/*Stunning Box*/
+.fadeInUp {
+    animation: 1s ease 0s normal none 1 running fadeInUp;
+}
+.mbf {
+    margin-bottom: 40px !important;
+}
+.stunning-box {
+    background: none repeat scroll 0% 0% #2C3E50;
+    text-align: center;
+    color: #FFF;
+    padding: 40px;
+    border-radius: 2px;
+    font-size: 16px;
+    font-family: "Oswald",tahoma;
+    text-transform: uppercase;
+<<<<<<< HEAD
+}
+.btn-follow{
+    color: white;
+    background-color:#61A8BF;
+    border-color:#89A8CB; 
+=======
+>>>>>>> 48c5be4b21eac2e5eab936a87c7e48bf4e4ad348
+}

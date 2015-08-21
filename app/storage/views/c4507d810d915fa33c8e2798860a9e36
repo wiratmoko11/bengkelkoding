@@ -1,0 +1,202 @@
+<?php $__env->startSection('content'); ?>
+<div class="media user-profile">
+    <div class="row">
+    <?php echo Session::token(); ?>
+
+        <div class="panel panel-default profile-user-box">
+            <div class="avatar">
+                <div class="photo-profil">
+                    <img src="assets/images/people/110/guy-5.jpg" alt="" class="img-circle">
+                    <i class="fa fa-pencil"></i>
+                    </img>
+                </div>
+                <h3><?php echo $users->name; ?></h3>
+                <h4><?php echo $users->job; ?></h4>
+                <?php echo Form::hidden('userId', $users->id, array('id'=>'userId')); ?>
+
+                <?php if($following == true): ?>
+                <a href="#" id="follow" class="btn btn-success follow">Following <i class="fa fa-check-circle fa-fw"></i></a>
+                <?php echo Form::hidden('status', 1, array('id'=>'status')); ?>
+
+                <?php else: ?>
+                <a href="#" id="follow" class="btn btn-follow follow">Follow <i class="fa fa-plus-circle fa-fw"></i></a>
+                <?php echo Form::hidden('status', 0, array('id'=>'status')); ?>
+
+                <?php endif; ?>
+            </div>
+            
+            <div class="profile-icons">
+                <span><i class="fa fa-star"></i>1240</span> <span><i class="fa fa-users"></i> 372</span> <span><i class="fa fa-photo"></i> 43</span> <span><i class="fa fa-video-camera"></i> 3 </span>
+            </div>
+                <?php echo $users->about; ?>
+
+            </div>
+            </div>
+    
+        <div class="media-object pull-left">
+            <div class="panel panel-default">
+
+                        <div class="panel-heading">
+                        <a href="#" class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+                            Contact Me
+                        </div>
+                        <ul class="icon-list block bordered">
+                            <li><i class="fa fa-envelope fa-fw"></i> <a href="#"><?php echo $users->email; ?></a>
+                            </li>
+                            <li><i class="fa fa-facebook fa-fw"></i> <a href="http://facebook.com/<?php echo $users->fb; ?>">/<?php echo $users->fb; ?></a>
+                            </li>
+                            <li><i class="fa fa-twitter fa-fw"></i> <a href="#">/<?php echo $users->twitter; ?></a>
+                            </li>
+                        </ul>
+                    </div>
+
+            <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-gray">
+                        <a href="#" class="btn btn-white btn-xs pull-right"><i class="fa fa-pencil"></i></a>
+                        <i class="fa fa-info-circle"></i> About
+                    </div>
+                    <div class="panel-body">
+                        <ul class="list-unstyled profile-about">
+                            <li>
+                                <div class="row">
+                                    <div class="col-sm-4"><span class="text-muted">Date of Birth</span>
+                                    </div>
+                                    <div class="col-sm-8">12 January 1990</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-sm-4"><span class="text-muted">Job</span>
+                                    </div>
+                                    <div class="col-sm-8">Specialist</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-sm-4"><span class="text-muted">Gender</span>
+                                    </div>
+                                    <div class="col-sm-8">Male</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-sm-4"><span class="text-muted">Lives in</span>
+                                    </div>
+                                    <div class="col-sm-8">Miami, FL, USA</div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="row">
+                                    <div class="col-sm-4"><span class="text-muted">Credits</span>
+                                    </div>
+                                    <div class="col-sm-8">249</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+        </div>
+        <div class="media-body">
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-gray">
+                        <i class="fa fa-bookmark"></i> Thread
+                    </div>
+                    
+                        
+                    
+                    <div class="table-responsive">
+                    <table class="table v-middle">
+                        <thead>
+                            <tr>
+                                <th>Thread</th>
+                                <th>View</th>
+                                <th>Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach($threads as $thread): ?>
+                            <?php
+                                $solved = $thread->solved;
+
+                                $judul = $thread->judul;
+                                $link = explode(" ", $judul);
+                                $link = implode("-", $link);
+                                $link = $thread->id."/".$link;
+
+                                $comment = DB::table('tcomments')->where('threadid', $thread->id)->get();
+                                $total = count($comment);
+                            ?>
+                            <tr>
+                                <td>
+                                    <a href="<?php echo URL::to('forum/'.$link); ?>"><?php echo $thread->judul; ?></a>
+                                    <?php if($solved == 1): ?>
+                                        <?php echo '<label class="label label-success">solved</label>'; ?>
+
+                                    <?php endif; ?>
+                                </td>
+                                <td>
+                                    <?php echo $thread->view; ?>
+
+                                </td>
+                                <td>
+                                    <?php echo $total; ?>
+
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading panel-heading-gray">
+                        <i class="fa fa-code"></i> Project Portofolio
+                    </div>
+                    <div class="panel-body">
+                        <div class="arow">
+                        <div class="col-md-4 col-xs-12">
+                            
+                        </div>
+                        <div class="col-md-8 col-xs-12">
+                            <h3>Atom - Designed for Mobile Apps</h3>
+                            <p>You can put one of your secondary projects here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.</p>
+                            <a href=""><i class="fa fa-external-link"></i>More</a>
+                        </div>
+                    </div>
+
+                    <div class="arow">
+                        <div class="col-md-4 col-xs-12">
+                            
+                        </div>
+                        <div class="col-md-8 col-xs-12">
+                            <h3>Atom - Designed for Mobile Apps</h3>
+                            <p>You can put one of your secondary projects here. Suspendisse in tellus dolor. Vivamus a tortor eu turpis pharetra consequat quis non metus. Aliquam aliquam, orci eu suscipit pellentesque, mauris dui tincidunt enim, eget iaculis ante dolor non turpis.</p>
+                            <a href=""><i class="fa fa-external-link"></i>More</a>
+                        </div>
+                    </div>
+                    </div>
+                    
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Pengalaman Kerja
+                    </div>
+                    <div class="panel-body">
+                        <div class="content">
+                            <div class="item">
+                                <h3 class="title">Co-Founder &amp; Lead Developer - <span class="place"><a href="#">Startup Hub</a></span> <span class="year">(2014 - Present)</span></h3>
+                                <p>Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+</div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

@@ -1,0 +1,121 @@
+<?php $__env->startSection('content'); ?>
+    <div class="tutorial">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table v-middle">
+                        <tbody>
+                            <?php foreach($tutorials as $key): ?>
+                            <?php
+                                $user = User::find($key->userid);
+
+                                $linkex = explode(" ", $key->judul);
+                                $link = strtolower(implode("-", $linkex));
+                                $link = $key->id."/".$link;
+                            ?>
+                            
+
+                            <tr>
+                                <td style="text-align:center">
+                                    <?php echo HTML::image('assets/images/people/50/guy-5.jpg', '', array('class'=>'img-circle')); ?> <br>
+                                    <?php echo $user->username; ?> <br>
+                                    <?php echo $key->created_at; ?>
+
+                                    
+                                </td>
+                                <td>
+                                    <h4><?php echo $key->judul; ?></h4> <br>
+                                    <p>
+                                        <?php 
+                                            echo substr(strip_tags(($key->content)), 0,200);
+                                            echo '.......';
+                                        ?>
+                                    </p>
+                                    <a href="tutorial/<?php echo $link; ?>"><button class="btn btn-success btn-sm" href>Show More <i class="fa fa-chevron-right"></i> </button></a>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+
+	<div class="wrapper wrapper-tutlist">
+
+                        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Page Heading
+                    <small>Secondary Text</small>
+                </h1>
+            </div>
+        </div>
+                          <?php foreach($tutorials as $tutorial): ?> 
+                        <div class="row">
+            <div class="col-md-6">
+                <a href="#">
+                    <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <h3><?php echo $tutorial->judul; ?></h3>
+                <h4>Subheading</h4>
+                <p>
+
+                <?php 
+                	echo substr(strip_tags(($tutorial->content)), 0,500);
+                ?>
+                	
+                </p>
+                <?php
+                	$linkex = explode(" ", $tutorial->judul);
+                	$link = strtolower(implode("-", $linkex));
+                    $link = $tutorial->id."/".$link;
+                ?>
+                <a href="tutorial/<?php echo $link; ?>"><button class="btn btn-primary btn-sm">Read more</button> <span class="fa fa-chevron-right"></span></a>
+            </div>
+        </div>
+        <hr>
+        <?php endforeach; ?>
+        
+        <hr>
+        <div class="row text-center">
+            <div class="col-lg-12">
+                <ul class="pagination">
+                    <li>
+                        <a href="#">«</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">3</a>
+                    </li>
+                    <li>
+                        <a href="#">4</a>
+                    </li>
+                    <li>
+                        <a href="#">5</a>
+                    </li>
+                    <li>
+                        <a href="#">»</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+  
+  
+                        </div>
+	<p>Halaman Index Tutorial</p>
+	
+		
+	
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('index', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

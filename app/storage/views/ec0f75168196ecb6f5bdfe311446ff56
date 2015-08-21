@@ -1,0 +1,27 @@
+<?php echo HTML::script('assets/js/jquery-2.1.4.min.js'); ?>
+
+<?php echo HTML::script('assets/js/vendor.min.js'); ?>
+
+<?php echo HTML::script('assets/js/scripts.min.js'); ?>
+
+
+ <script type="text/javascript">
+    $(document).ready(function()
+    {
+        $("#follow").click(function(e)
+        {
+            e.preventDefault();
+            var status = $('#status').val();
+            var token = "<?php echo Session::token(); ?>";
+            var userId = $('#userId').val();
+            $.ajax({
+                type: "POST",
+                url: "follow/status/"+status,
+                data: {token:token, userId:userId, status:status},
+                success: function(){
+                	//code here
+                }
+            });
+        });
+    });
+</script>
